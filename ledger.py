@@ -21,6 +21,7 @@ class Ledger:
 
     def __init__(self) -> None:
         """Create an empty ledger."""
+        self.transactions: list[dict[str, object]] = []
 
     def add(self, amount: float, category: str, on: date | None = None) -> None:
         """Record one transaction.
@@ -30,6 +31,15 @@ class Ledger:
 
         Raises ``ValueError`` if the amount is zero or the category is empty.
         """
+        if amount == 0:
+            raise ValueError("amount cannot be zero")
+        if category is None or not category.strip():
+            raise ValueError("category cannot be empty")
+
+        if on is None:
+            on = today()
+
+        self.transactions.append({"amount": amount, "category": category, "date": on})
 
     def balance(self) -> float:
         """Return total income minus total spending.
