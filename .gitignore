@@ -1,0 +1,12 @@
+# Virtual environment (uv recreates it from uv.lock)
+.venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# pytest
+.pytest_cache/
+
+# macOS
+.DS_Store
